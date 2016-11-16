@@ -26,5 +26,5 @@ You can run the last 2 commands in 2 seperate terminals to automatically update 
 Design Decisions
 ====
 
-1) Why use Immediately-invoked function expressions (IIFE)?
+1. Why use Immediately-invoked function expressions (IIFE)?
     I wanted to keep all of the code in one file for simplicity, Doing so means there could be scope issues and this is the simplest way around that issue.

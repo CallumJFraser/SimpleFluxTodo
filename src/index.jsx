@@ -1,4 +1,5 @@
-/*  TODO
+/*
+    TODO
     * Refine event functions
     * Split up into seperate files
     * CSS
@@ -20,6 +21,9 @@ const Dispatcher = (() => {
         }
     };
 })();
+
+//  Immediately-invoked functions `(() => {...})()` are used here with the modules
+//  to make _callbacks and _todos unavailable outside the function.
 
 //  Store handles storage and updates components that care about its events
 const TodoStore = (() => {
@@ -92,7 +96,6 @@ const TodoStore = (() => {
         }
     };
 })();
-
 
 //  React Components
 //  TodoItem handles individual Todo actions (removal and update)
@@ -183,7 +186,7 @@ const Index = React.createClass({
     }
 });
 
-//  Trigger
+//  Bind UI generation to onLoad Trigger
 document.addEventListener('DOMContentLoaded', function () {
     ReactDOM.render(<Index />, document.getElementById('body'));
 });
