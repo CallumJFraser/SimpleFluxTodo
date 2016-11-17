@@ -12,6 +12,8 @@ Setup
 
 run `npm i` in command line/terminal to install node dependencies.
 
+If you don't have it installed you will also need to run `npm i -g webpack` to install webpack globally.
+
 Run
 ====
 
