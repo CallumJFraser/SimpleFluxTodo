@@ -5,9 +5,14 @@ I felt the TODO example on the flux website is unnessasarally overcomplicated fo
 
 This Todo application is my interpretation of a simple client side flux implementation based on the [FLUX structure and data flow](https://facebook.github.io/flux/docs/overview.html#structure-and-data-flow).
 
-This application uses the following modules:
-* [Webpack](http://webpack.github.io/) - Combines the JS files in /src folder into one 'bundle' JS file.
-* [Babel](babeljs.io) - Transpiles ES6 JS code into the more compatible ES5 standard.
+This application uses the following:
+
+* Building
+    * [Webpack](https://webpack.github.io/) - Combines the JS files in /src folder into one 'bundle' JS file.
+    * [Babel](https://babeljs.io/) - Transpiles ES6 JS code into the more compatible ES5 standard.
+* Client-side
+    * [Bootstrap](https://getbootstrap.com/) - CSS grid and basic application styles
+
 
 Any feedback or improvements please give me a yell.
 
