@@ -40,7 +40,7 @@ module.exports = React.createClass({
         });
         return (
             <div className="col-sm-12">
-                <h1>Todos</h1>
+                <h1>Simple Flux Todo</h1>
                 <ul>
                     {todos}
                 </ul>
