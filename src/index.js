@@ -1,6 +1,3 @@
-const Dispatcher = require('./dispatcher');
-const TodoStore = require('./stores/todo');
-const change = 'newesttrue';
 const TodoList = require('./components/todolist');
 
 const Index = React.createClass({
