@@ -5,6 +5,10 @@ I felt the TODO example on the flux website is unnessasarally overcomplicated fo
 
 This Todo application is my interpretation of a simple client side flux implementation based on the [FLUX structure and data flow](https://facebook.github.io/flux/docs/overview.html#structure-and-data-flow).
 
+This application uses the following modules:
+* [Webpack](http://webpack.github.io/) - Combines the JS files in /src folder into one 'bundle' JS file.
+* [Babel](babeljs.io) - Transpiles ES6 JS code into the more compatible ES5 standard.
+
 Any feedback or improvements please give me a yell.
 
 Setup
@@ -17,13 +21,9 @@ If you don't have it installed you will also need to run `npm i -g webpack` to i
 Run
 ====
 
-run `npm run build` to build the src/index.jsx file into the needed dist/index.js file.
+run `npm run build` to build the src/index.js file into the needed build/index.bundle.js file.
 
-run `npm run build-listen` to start build listener.
-
-run `npm run dev` to run the webpack package listener for local hosting.
-
-You can run the last 2 commands in 2 seperate terminals to automatically update any changes.
+run `npm run watcher` to run the webpack package listener for local hosting.
 
 Design Decisions
 ====
