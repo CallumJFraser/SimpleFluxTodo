@@ -1,56 +1,18 @@
-h1 {
-    margin:inherit auto;
+ul {
+    padding-left: 0;
 }
 
-body {
-    background-color: black;
+li {
+    list-style-type: none;
 }
 
-.container {
-    position: relative;
-    width: 80%;
-    height: 50rem;
-    margin:1rem auto;
-    padding: 2rem 5%;
-    background-color: white;
-}
-
-#next {
-    position: absolute;
-    bottom: 3rem;
-    right: 3rem;
-}
-
-#prev {
-    position: absolute;
-    bottom: 3rem;
-    left: 3rem;
-}
-
-.todo-list {
-    width: 80%;
-}
-.todo-list__list {
-    padding: 0;
-    margin: 0;
-}
-
-.todo-item {
-    display: block;
+button, input, textarea {
     width: 100%;
 }
 
-.todo-item__text {
-    width:70%;
-    display:inline-block;
-}
-
-.todo-item__display, .todo-item__form {
-    display: inline-block;
-    width:50%;
-}
-
-.button {
-    padding: 0.2rem 1rem;
-    margin: 0.2rem;
+button, input, textarea {
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
 }

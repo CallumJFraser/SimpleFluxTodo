@@ -21,9 +21,17 @@ module.exports = React.createClass({
     },
     render: function TotoItemRender () {
         return (
-            <li className="todo-item" key={this.props.item.id}>
-                <input className="todo-item__text" name="text" value={this.props.item.text} onChange={this._onChange}/>
-                <button className="button todo-item__remove" onClick={this._removeItem}>Remove</button>
+            <li key={this.props.item.id}>
+                <form>
+                    <div className="row">
+                        <div className="col-xs-8 col-sm-10">
+                            <textarea className="form-control" name="text" value={this.props.item.text} onChange={this._onChange}></textarea>
+                        </div>
+                        <div className="col-xs-4 col-sm-2">
+                            <button type="button" className="btn btn-danger" onClick={this._removeItem}>Remove</button>
+                        </div>
+                    </div>
+                </form>
             </li>
         );
     }

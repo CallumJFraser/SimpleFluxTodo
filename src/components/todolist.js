@@ -39,11 +39,12 @@ module.exports = React.createClass({
             todos.push(<TodoItem key={item.id} item={item} />)
         });
         return (
-            <div className="todo-list">
-                <ul className="todo-list__list">
+            <div className="col-sm-12">
+                <h1>Todos</h1>
+                <ul>
                     {todos}
                 </ul>
-                <button className="button todo-list__add" onClick={this._addItem}>Add</button>
+                <button type="button" className="btn btn-primary" onClick={this._addItem}>Add</button>
             </div>
         );
     }

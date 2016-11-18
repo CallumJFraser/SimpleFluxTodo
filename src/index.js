@@ -3,10 +3,9 @@ const TodoList = require('./components/todolist');
 const Index = React.createClass({
     render: function IndexRender () {
         return (
-            <section id="todo-list">
-                <h1>Todo List</h1>
+            <div className="row">
                 <TodoList />
-            </section>
+            </div>
         );
     }
 });
