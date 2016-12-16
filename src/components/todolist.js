@@ -10,7 +10,7 @@ module.exports = React.createClass({
         }
     },
     componentDidMount: function () {
-        var taskId = TodoStore.register(payload => {
+        var taskId = TodoStore.subscribe(payload => {
             if (payload.action === 'UPDATE') {
                 this._onChange();
             }
@@ -20,10 +20,10 @@ module.exports = React.createClass({
         })
     },
     componentWillUnmount: function () {
-        TodoStore.unregister(this.state.taskId);
+        TodoStore.unsubscribe(this.state.taskId);
     },
     _addItem: () => {
-        Dispatcher.dispatch({
+        Dispatcher.publish({
             action: 'TODO_CREATE',
             data: {}
         });

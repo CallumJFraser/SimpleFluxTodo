@@ -1,14 +1,8 @@
-var _callbacks = [];
+const setupObserver = require('./setupObserver');
 
-module.exports = {
-    register: callback => {
-        _callbacks.push(callback);
-    },
-    dispatch: payload => {
-        _callbacks.forEach(callback => {
-            if (typeof callback === 'function') {
-                callback(payload);
-            }
-        });
-    }
-};
+const dispatcher = {};
+const publish = setupObserver(dispatcher)
+
+dispatcher.publish = publish;
+
+module.exports = dispatcher;

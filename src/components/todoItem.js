@@ -1,5 +1,4 @@
 const Dispatcher = require('../dispatcher')
-const TodoStore = require('../stores/todo');
 
 module.exports = React.createClass({
     _onChange: function (event) {
@@ -8,13 +7,13 @@ module.exports = React.createClass({
             text: event.target.value
         };
 
-        Dispatcher.dispatch({
+        Dispatcher.publish({
             action: 'TODO_UPDATE',
             data: eventData
         });
     },
     _removeItem: function () {
-        Dispatcher.dispatch({
+        Dispatcher.publish({
             action: 'TODO_REMOVE',
             data: this.props.item.id
         })

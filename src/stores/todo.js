@@ -1,11 +1,13 @@
 const Dispatcher = require('../dispatcher');
+const setupObserver = require('../setupObserver');
 
+const todoStore = {};
+const publish = setupObserver(todoStore);
 //  Store handles storage and updates components that care about its events
-var _callbacks = [];
 var _todos = [{id: 1, text: 'Try Me'}];
 
-if (localStorage && localStorage.todos) {
-    _todos = JSON.parse(localStorage.todos);
+if (localStorage && localStorage.simpleFluxTodos) {
+    _todos = JSON.parse(localStorage.simpleFluxTodos);
 }
 
 var create = todo => {
@@ -31,41 +33,26 @@ var update = todo => {
     });
 };
 
-var dispatchMessage = payload => {
-    _callbacks.forEach(function (callback) {
-        if (typeof callback === 'function') {
-            callback(payload);
-        }
+const dispatchId = Dispatcher.subscribe(payload => {
+    switch(payload.action) {
+        case 'TODO_CREATE':
+            create(payload.data);
+            break;
+        case 'TODO_REMOVE':
+            remove(payload.data);
+            break;
+        case 'TODO_UPDATE':
+            update(payload.data);
+            break;
+    }
+    localStorage.setItem('simpleFluxTodos', JSON.stringify(_todos));
+    publish({
+        action: 'UPDATE'
     });
+});
+
+todoStore.getTodos = () => {
+    return _todos;
 };
 
-module.exports = {
-    getTodos: () => {
-        return _todos;
-    },
-    handleDispatch: Dispatcher.register(payload => {
-        switch(payload.action) {
-            case 'TODO_CREATE':
-                create(payload.data);
-                break;
-            case 'TODO_REMOVE':
-                remove(payload.data);
-                break;
-            case 'TODO_UPDATE':
-                update(payload.data);
-                break;
-        }
-        localStorage.setItem('todos', JSON.stringify(_todos));
-        dispatchMessage({
-            action: 'UPDATE'
-        });
-    }),
-    register: callback => {
-        const callbackId = _callbacks.length;
-        _callbacks.push(callback);
-        return callbackId;
-    },
-    unregister: callbackId => {
-        _callbacks.splice(callbackId, 1);
-    }
-};
+module.exports = todoStore;
