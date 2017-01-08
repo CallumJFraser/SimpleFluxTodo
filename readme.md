@@ -15,7 +15,11 @@ This application uses the following:
     * [Babel](https://babeljs.io/) - Transpiles ES6 JS code into the more compatible ES5 standard.
 * Client-side
     * [Bootstrap](https://getbootstrap.com/) - CSS grid and basic application styles
-
+* Testing
+	* [Mocha](https://mochajs.org/) - Testing framework.
+	* [Chai](http://chaijs.com/) - BDD/TDD assertion library.
+	* [Karma](https://karma-runner.github.io/) - Test runner for client side code.
+	* [Rewire](https://github.com/jhnns/rewire) - Module that allows access to normally inacessible parts of another module.
 
 Any feedback or improvements please give me a yell.
 
