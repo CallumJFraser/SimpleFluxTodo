@@ -1,6 +1,6 @@
 module.exports = {
-    context: __dirname + '/src',
-    entry: './index',
+    context: __dirname,
+    entry: './src/index',
     output: {
         path: __dirname + '/build',
         filename: "index.bundle.js"
@@ -10,7 +10,8 @@ module.exports = {
             test: /\.js$/,
             loader: 'babel-loader',
             query: {
-                presets: ['es2015','react']
+                presets: ['es2015','react'],
+                plugins: ['rewire']
             }
         }]
     }
