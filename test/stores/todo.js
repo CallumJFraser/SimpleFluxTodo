@@ -5,21 +5,14 @@ describe('Todo store', function () {
 	const createAction = 'TODO_CREATE';
 	const removeAction = 'TODO_REMOVE';
 	const updateAction = 'TODO_UPDATE';
-	var rollback;
+	const setTodos = todoStore.__get__('setTodos');
 
 	beforeEach(function () {
-		rollback = todoStore.__set__('_todos', []);
-	});
-
-	afterEach(function () {
-		if (rollback) {
-			rollback();
-			rollback = undefined;
-		}
+		setTodos([]);
 	});
 
 	it('should return current list of todos',function () {
-		rollback = todoStore.__set__('_todos', [{
+		setTodos([{
 			id: 12345,
 			text: '0one2three4five6seven8nine'
 		}]);
@@ -28,7 +21,7 @@ describe('Todo store', function () {
 		todos[0].id.should.equal(12345);
 		todos[0].text.should.equal('0one2three4five6seven8nine');
 
-		rollback = todoStore.__set__('_todos', [{
+		setTodos([{
 			id: 54321,
 			text: '9eight7six5four3two1zero'
 		}]);
@@ -48,13 +41,13 @@ describe('Todo store', function () {
 			}
 		});
 
-		const todos = todoStore.__get__('_todos');
+		const todos = todoStore.getTodos();
 		todos[0].text.should.equal('testing this shizzle');
 	});
 
 	it('should handle todo remove action', function () {
 		const handleDispatch = todoStore.__get__('handleDispatch');
-		rollback = todoStore.__set__('_todos', [{
+		setTodos([{
 			id:1,
 			text: 'this is a test'
 		}]);
@@ -64,13 +57,13 @@ describe('Todo store', function () {
 			data: 1
 		});
 
-		const todos = todoStore.__get__('_todos');
+		const todos = todoStore.getTodos();
 		todos.length.should.equal(0);
 	});
 
 	it('should handle todo update action', function () {
 		const handleDispatch = todoStore.__get__('handleDispatch');
-		rollback = todoStore.__set__('_todos', [{
+		setTodos([{
 			id:1,
 			text: 'this is a test'
 		}]);
@@ -83,7 +76,7 @@ describe('Todo store', function () {
 			}
 		});
 
-		const todos = todoStore.__get__('_todos');
+		const todos = todoStore.getTodos();
 		todos[0].text.should.equal('updated text');
 	});
 });
