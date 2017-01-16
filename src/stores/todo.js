@@ -6,7 +6,10 @@ const todoStore = {};
 const publish = setupObserver(todoStore);
 
 const getTodos = () => {
-    return JSON.parse(localStorage[localStorageName]);
+    if (localStorage && localStorage[localStorageName]) {
+        return JSON.parse(localStorage[localStorageName]);
+    }
+    return [{id: 1, text: 'Try Me'}];
 };
 
 const setTodos = sinList => {
