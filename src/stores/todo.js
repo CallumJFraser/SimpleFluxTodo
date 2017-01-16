@@ -12,8 +12,8 @@ const getTodos = () => {
     return [{id: 1, text: 'Try Me'}];
 };
 
-const setTodos = sinList => {
-    localStorage.setItem(localStorageName, JSON.stringify(sinList));
+const setTodos = todoList => {
+    localStorage.setItem(localStorageName, JSON.stringify(todoList));
 };
 
 const create = todo => {
