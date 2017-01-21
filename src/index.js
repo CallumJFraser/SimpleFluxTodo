@@ -1,6 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const TodoList = require('./components/todolist');
+const TodoList = require('./components/todoList');
 
 const Index = React.createClass({
     render: function IndexRender () {
