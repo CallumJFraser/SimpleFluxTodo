@@ -4,6 +4,7 @@ const ReactDOM = require('react-dom');
 const TestUtils = require('react-addons-test-utils');
 
 const TodoItem = require('../../src/components/todoItem');
+const Dispatcher = require('../../src/dispatcher');
 
 describe('TodoItem', function () {
 	const testItem = {
@@ -23,5 +24,18 @@ describe('TodoItem', function () {
 		nameInput.textContent.should.equal('temp');
 		removeButton.length.should.equal(1);
 		removeButton[0].textContent.should.equal('Remove');
+	});
+
+	it('should send a "TODO_REMOVE" payload to the dispatcher when remove button clicked', function (done) {
+		var todoItem = renderComponent();
+		const removeButton = todoItem.querySelectorAll('button')[0];
+
+		Dispatcher.subscribe(function (payload) {
+			payload.action.should.equal('TODO_REMOVE');
+			payload.data.should.equal(1);
+			done();
+		});
+
+		TestUtils.Simulate.click(removeButton);
 	});
 });
