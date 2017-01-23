@@ -4,9 +4,10 @@ const ReactDOM = require('react-dom');
 const TestUtils = require('react-addons-test-utils');
 
 const TodoList = require('../../src/components/todoList');
+const Dispatcher = require('../../src/dispatcher');
 
 describe('TodoList', function () {
-	const renderComponent = function () {
+	function renderComponent () {
 		const component = TestUtils.renderIntoDocument(<TodoList />);
 		return ReactDOM.findDOMNode(component);
 	};
@@ -16,5 +17,18 @@ describe('TodoList', function () {
 
 		const title = todoList.querySelectorAll('h1')[0];
 		title.textContent.should.equal('Simple Flux Todo');
+	});
+
+	it('should send a "TODO_CREATE" payload to the dispatcher when remove button clicked', function (done) {
+		var todoList = renderComponent();
+		const removeButton = todoList.querySelectorAll('.btn-add')[0];
+
+		var dispatcherId = Dispatcher.subscribe(function (payload) {
+			payload.action.should.equal('TODO_CREATE');
+			done();
+		});
+
+		TestUtils.Simulate.click(removeButton);
+		Dispatcher.unsubscribe(dispatcherId);
 	});
 });

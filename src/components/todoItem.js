@@ -28,7 +28,7 @@ module.exports = React.createClass({
                             <textarea className="form-control" name="text" value={this.props.item.text} onChange={this._onChange}></textarea>
                         </div>
                         <div className="col-xs-4 col-sm-2">
-                            <button type="button" className="btn btn-danger" onClick={this._removeItem}>Remove</button>
+                            <button type="button" className="btn btn-danger btn-remove" onClick={this._removeItem}>Remove</button>
                         </div>
                     </div>
                 </form>

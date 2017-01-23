@@ -45,7 +45,7 @@ module.exports = React.createClass({
                 <ul>
                     {todos}
                 </ul>
-                <button type="button" className="btn btn-primary" onClick={this._addItem}>Add</button>
+                <button type="button" className="btn btn-primary btn-add" onClick={this._addItem}>Add</button>
             </div>
         );
     }

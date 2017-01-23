@@ -11,7 +11,8 @@ describe('TodoItem', function () {
 		id: 1,
 		text: 'temp'
 	};
-	const renderComponent = function () {
+
+	function renderComponent () {
 		const component = TestUtils.renderIntoDocument(<TodoItem item={testItem} />);
 		return ReactDOM.findDOMNode(component);
 	};
@@ -30,12 +31,13 @@ describe('TodoItem', function () {
 		var todoItem = renderComponent();
 		const removeButton = todoItem.querySelectorAll('button')[0];
 
-		Dispatcher.subscribe(function (payload) {
+		var dispatcherId = Dispatcher.subscribe(function (payload) {
 			payload.action.should.equal('TODO_REMOVE');
 			payload.data.should.equal(1);
 			done();
 		});
 
 		TestUtils.Simulate.click(removeButton);
+		Dispatcher.unsubscribe(dispatcherId);
 	});
 });
