@@ -2,7 +2,7 @@ const React = require('react');
 const Dispatcher = require('../dispatcher');
 const TodoStore = require('../stores/todo');
 
-const TodoItem = require('./todoItem');
+const TodoItem = require('./todoItem.jsx');
 
 module.exports = React.createClass({
     getInitialState: () => {
